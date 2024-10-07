@@ -14,6 +14,17 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="../images/webclip.png" rel="apple-touch-icon"><!--  Keep this css code to improve the font quality -->
+  
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "ekarovtrIkF2u8gV4", 
+        }); // To be replaced with team's EmailJS public key
+    })();
+  </script>
+  
   <style>
   * {
   -webkit-font-smoothing: antialiased;
@@ -330,7 +341,7 @@
                   </div>
                 </div>
                 <div class="join-our-team_application-form_form-block w-form">
-                  <form id="wf-form-Contact-5-Form" name="wf-form-Contact-5-Form" data-name="Contact 5 Form" method="get" class="join-our-team_application-form_form" data-wf-page-id="66aa83424ed0db6b99813bbd" data-wf-element-id="bc5265a6-062e-cdd3-a59a-724fc287aef4">
+                  <form id="join-team-form" name="wf-form-Contact-5-Form" data-name="Contact 5 Form" method="get" class="join-our-team_application-form_form" data-wf-page-id="66aa83424ed0db6b99813bbd" data-wf-element-id="bc5265a6-062e-cdd3-a59a-724fc287aef4">
                     <div class="form_field-wrapper"><label for="Contact-5-Name" class="form_field-label">Name</label><input class="form_input w-input" maxlength="256" name="Contact-5-Name" data-name="Contact 5 Name" placeholder="" type="text" id="Contact-5-Name" required=""></div>
                     <div class="form_field-wrapper"><label for="Contact-5-Email" class="form_field-label">Email</label><input class="form_input w-input" maxlength="256" name="Contact-5-Email" data-name="Contact 5 Email" placeholder="" type="email" id="Contact-5-Email" required=""></div>
                     <div class="form_field-wrapper"><label for="Contact-5-Message" class="form_field-label">Message</label><textarea placeholder="Enter your message..." maxlength="5000" id="Contact-5-Message" name="Contact-5-Message" data-name="Contact 5 Message" required="" class="form_input is-text-area w-input"></textarea></div>
@@ -472,6 +483,65 @@
       </div>
     </footer>
   </div>
+
+  <!-- Form submission -->
+  <script type="text/javascript">
+    document.getElementById('join-team-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const name = document.getElementById('Contact-5-Name').value;
+        const email = document.getElementById('Contact-5-Email').value;
+        const message = document.getElementById('Contact-5-Message').value;
+        const checkbox = document.getElementById('Contact 5 Checkbox').checked;
+
+        //ToDO: disable submit button to prevent multiple submissions or sth 
+
+        // Validate name inputted
+        if (!name) {
+          alert('Please enter your name.');
+          return;
+        }
+        // Validate email inputted
+        if (!validateEmail(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        // Validate message inputted
+        if (!message) {
+          alert('Please enter a message.');
+          return;
+        }
+        // Validate checkbox
+        if (!checkbox) {
+          alert('Please agree to the terms by checking the box.');
+          return;
+        }
+
+        // Define the template parameters
+        const templateParams = {
+            name: name,
+            email: email,
+            message: message
+        };
+
+        // Send the email using EmailJS
+        emailjs.send('service_luoeqxa', 'template_1ibhtcb', templateParams) // service id, template id, ....
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Message successfully sent!');
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('There was an error in sending the message.');
+            });
+    });
+
+    function validateEmail(email) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    }
+  </script>
+
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=66a516a58645fdf3feeab92c" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="../js/webflow.js" type="text/javascript"></script>
 </body>
