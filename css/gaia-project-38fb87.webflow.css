@@ -33,6 +33,7 @@
   --border-color--border-secondary: var(--base-color-neutral--neutral-light);
   --border-color--border-alternate: var(--base-color-neutral--white);
   --link-color--link-secondary: var(--base-color-neutral--neutral-light);
+  --base-color-neutral--green: rgb(88,156,100);
 }
 
 .w-layout-grid {
@@ -736,6 +737,7 @@ figcaption {
 }
 
 .button.is-link.is-icon {
+  color: var(--base-color-neutral--green);
   grid-column-gap: .5rem;
   grid-row-gap: .5rem;
 }
@@ -759,6 +761,9 @@ figcaption {
 }
 
 .button.is-small {
+  border: 1px solid var(--base-color-neutral--green);
+  background-color: var(--base-color-neutral--green);
+  color: var(--base-color-neutral--white);
   padding: .5rem 1.25rem;
 }
 
@@ -774,7 +779,7 @@ figcaption {
 }
 
 .button.is-tertiary {
-  color: var(--base-color-neutral--black);
+  color: var(--base-color-neutral--green);
   background-color: rgba(0, 0, 0, 0);
   border-color: rgba(0, 0, 0, 0);
 }
@@ -785,6 +790,9 @@ figcaption {
 }
 
 .button.button-2 {
+  border: 1px solid var(--base-color-neutral--green);
+  background-color: var(--base-color-neutral--green);
+  color: var(--base-color-neutral--white);
   border-radius: .8em;
 }
 
@@ -1023,6 +1031,7 @@ figcaption {
 }
 
 .icon-height-xxsmall {
+  color: green;
   height: 1rem;
 }
 
@@ -1154,6 +1163,7 @@ figcaption {
 }
 
 .icon-height-large {
+  color: rgb(88,156,100);
   height: 5rem;
 }
 
@@ -1980,7 +1990,7 @@ figcaption {
 }
 
 .about-us_timeline_progress-bar {
-  background-color: #000;
+  background-color:rgb(88,156,100);
   width: 2px;
   height: 100%;
 }
@@ -2032,7 +2042,7 @@ figcaption {
 }
 
 .button-2.is-secondary {
-  color: var(--base-color-neutral--black);
+  color: var(--base-color-neutral--green);
   background-color: rgba(0, 0, 0, 0);
 }
 
